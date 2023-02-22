@@ -69,6 +69,9 @@ return {
     cmd = {"TSInstall", "TSUpdate", "TSInstallInfo"},
     opts = require("config.treesitter"),
     event = "bufEnter",
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end
   },
 
   {
