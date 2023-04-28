@@ -42,8 +42,10 @@ return {
 	},
     sources = {
        { name = "nvim_lsp" },
-       { name = "buffer" },
+       { name = "buffer", keyword_length = 3 },
        { name = "nvim_lua" },
+       { name = "path" },
+       { name = "luasnip", keyword_length = 2 },
     },
   preselect = "none" -- cmp.PreselectMode.None
 }

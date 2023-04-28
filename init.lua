@@ -17,10 +17,6 @@ require("config.bindings")
 
 require("lazy").setup("plugins")
 
-if require "first_load"() then
-  return
-end
-
 if vim.g.neovide then
   require("config.neovide")
 end

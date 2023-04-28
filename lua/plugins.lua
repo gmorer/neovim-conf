@@ -60,10 +60,6 @@ return {
   "nvim-telescope/telescope-ui-select.nvim",
 
   -- Completion and linting
-  "neovim/nvim-lspconfig",
-  "nvim-lua/lsp-status.nvim",
-
-  -- lsp stuff
   {
     "nvim-treesitter/nvim-treesitter",
     cmd = {"TSInstall", "TSUpdate", "TSInstallInfo"},
@@ -72,6 +68,30 @@ return {
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
     end
+  },
+  -- "neovim/nvim-lspconfig",
+
+  -- lsp stuff
+
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    dependencies = {
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},             -- Required
+      {                                      -- Optional
+        'williamboman/mason.nvim',
+        build = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
+      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},     -- Required
+      {'hrsh7th/cmp-nvim-lsp'}, -- Required
+      {'L3MON4D3/LuaSnip'},     -- Required
+    }
   },
 
   {
@@ -83,30 +103,13 @@ return {
     },
   },
 
-  "nvim-lua/lsp_extensions.nvim",
+  -- "nvim-lua/lsp_extensions.nvim",
 
-
+  -- lsp loading
   {
-    "hrsh7th/nvim-cmp",
-    init = function () vim.opt.completeopt = "menuone,noselect" end,
-    opts = require("config.cmp"),
-    event = "InsertEnter",
-    dependencies = {
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-nvim-lua",
-      "rafamadriz/friendly-snippets",
-      "L3MON4D3/LuaSnip",
-    }
-  },
-
-  {
-    "L3MON4D3/LuaSnip",
-    dependencies = "friendly-snippets",
-    config = require("config.others").luasnip(),
-    lazy = true,
+    "j-hui/fidget.nvim",
+    config = true,
+    opts = { text = { spinner = "dots_negative" }}
   },
 
 
@@ -135,7 +138,6 @@ return {
   "kyazdani42/nvim-web-devicons",
 
   -- zen mode
-
   {
     "Pocco81/true-zen.nvim",
     cmd = { "TZAtaraxis", "TZFocus", "TZMinimalist", "TZNarrow"},
@@ -155,6 +157,7 @@ return {
     }
   },
 
+  -- file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
@@ -168,21 +171,22 @@ return {
     cmd = "Neotree",
   },
 
+  -- bottom bar
   {
     "nvim-lualine/lualine.nvim",
     dependencies = {
-      {"arkav/lualine-lsp-progress" },
       {"kyazdani42/nvim-web-devicons" }
     },
     opts = { options = { theme = "catppuccin" }}
   },
 
+  -- Floating file name
   {
     "b0o/incline.nvim",
     opts = require("config.incline"),
   },
 
-  -- tabbar
+  -- topbar
   {
     "akinsho/bufferline.nvim",
     -- tag = "v2.*",
