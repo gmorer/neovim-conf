@@ -140,7 +140,15 @@ end
 
 
 local servers = {
-    omnisharp = { cmd = { '/home/guilhem/sources/omnisharp-linux-x64/run', '--languageserver' , '--hostPID', tostring(vim.fn.getpid()) } },
+    -- omnisharp = { cmd = { '/home/guilhem/sources/omnisharp-linux-x64/run', '--languageserver' , '--hostPID', tostring(vim.fn.getpid()) } },
+    -- omnisharp = { cmd = { 'OmniSharp' } },
+  --[[
+    omnisharp = {
+      cmd = { 'podman', 'run', '--rm', '-i', '-v=.:/workdir:rw', '--workdir=/workdir', 'lsp/omnisharp', 'omnisharp', '--languageserver' , 'unity.sln'},
+      sdk_include_prereleases = false,
+      init_options = {},
+    },
+    --]]
     -- bashls = {},
     clangd = {
         cmd = {
