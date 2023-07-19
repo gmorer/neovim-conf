@@ -30,6 +30,8 @@ lsp.configure('tsserver', {
   }
 })
 --]]
+--
+lsp.skip_server_setup({"yamlls"})
 
 
 lsp.setup()
