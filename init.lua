@@ -12,9 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- load the bindings
-require("config.bindings")
-
 require("lazy").setup("plugins")
 
 if vim.g.neovide then
@@ -38,3 +35,7 @@ require("config.theme")
 
 -- Hexedit
 require("binedit")
+
+-- load the bindings
+require("config.bindings")
+

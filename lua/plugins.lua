@@ -117,9 +117,8 @@ return {
 
 
   -- git
-
   -- gitdiff
-  {
+   {
     "sindrets/diffview.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     cmd = {"DiffviewFileHistory", "DiffviewOpen"}
@@ -129,12 +128,6 @@ return {
     "lewis6991/gitsigns.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = true,
-  },
-
-  -- blame popup
-  {
-    "rhysd/git-messenger.vim",
-    cmd = "GitMessenger",
   },
 
   -- MultiCursor
@@ -240,5 +233,11 @@ return {
       "hrsh7th/nvim-cmp",
       "MunifTanjim/nui.nvim",
     }
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    cmd = { "ToggleTerm" },
+    version = "*",
+    config = true
   }
 }

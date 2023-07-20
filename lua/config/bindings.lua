@@ -6,12 +6,13 @@ vim.api.nvim_set_keymap('', '<C-n>', ':Neotree toggle filesystem left reveal<CR>
 vim.api.nvim_set_keymap('n', '<S-T>', ':lua require"telescope.builtin".buffers{}<CR>', dfl_opt)
 
 -- nnoremap <Leader>s :<C-u> :Git blame<CR>
-vim.api.nvim_set_keymap('', '<Leader>s', ':<C-u> : GitMessenger<CR>', dfl_opt)
+vim.api.nvim_set_keymap('', '<Leader>s', ':lua require("gitsigns").blame_line()<CR>', dfl_opt)
 
 vim.api.nvim_set_keymap('', '<C-/>', ':CommentToggle<CR>', dfl_opt)
 
 vim.api.nvim_set_var('VM_maps', {['Find Under'] = '<C-d>', ['Find Subword Under'] = '<C-d>'})
 
+vim.api.nvim_set_keymap('n', 'tt', ':ToggleTerm direction=float<CR>', dfl_opt)
 vim.api.nvim_set_keymap('t', '<C-`>', '<C-\\><C-n>', dfl_opt)
 vim.api.nvim_set_keymap('t', '<C-w>', '<C-\\><C-n><C-w>', dfl_opt)
 vim.api.nvim_set_keymap('t', '<C-PageUp>', '<C-\\><C-n><C-PageUp>', dfl_opt)
