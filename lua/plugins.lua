@@ -49,8 +49,8 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
-    init = require("config.telescope").init,
     opts = require("config.telescope").opts,
+    config = require("config.telescope").config,
     dependencies = "nvim-web-devicons"
   },
   "folke/neodev.nvim",
@@ -227,7 +227,7 @@ return {
   {
     "folke/noice.nvim",
     event = "VimEnter",
-    enabled = vim.g.neovide == nil,
+    -- enabled = vim.g.neovide == nil,
     init = function()
       require("telescope").load_extension("noice")
     end,
