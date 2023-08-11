@@ -1,11 +1,14 @@
 local M = {}
-M.init = function()
-  local map = require('config.utils').map
+M.config = function()
+  local map = require('config.utils').lua_map
+  local builtin = require('telescope.builtin')
+  -- print(telescope)
 
   local silent = {silent = true}
   -- Navigate buffers and repos
-  map('n', '<c-p>', [[<cmd>Telescope find_files<cr>]], silent)
-  map('n', '<c-o>', [[<cmd>Telescope live_grep<cr>]], silent)
+  map('n', '<c-p>', builtin.find_files, silent)
+  map('n', '<c-o>', builtin.live_grep, silent)
+  map('n', '<c-b>', builtin.buffers, silent)
 end
 
 -- require("telescope").load_extension("noice")
