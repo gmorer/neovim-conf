@@ -37,5 +37,5 @@ require("config.theme")
 require("binedit")
 
 -- load the bindings
-require("config.bindings")
+require("config.bindings").default()
 

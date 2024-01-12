@@ -1,29 +1,26 @@
-local M = {}
-M.config = function()
-  local map = require('config.utils').lua_map
-  local builtin = require('telescope.builtin')
+return function()
+  local telescope = require('telescope')
+  local actions = require('telescope.actions')
   -- print(telescope)
 
-  local silent = {silent = true}
-  -- Navigate buffers and repos
-  map('n', '<c-p>', builtin.find_files, silent)
-  map('n', '<c-o>', builtin.live_grep, silent)
-  map('n', '<c-b>', builtin.buffers, silent)
-end
-
--- require("telescope").load_extension("noice")
-
-M.opts = {
+  telescope.setup({
     defaults = {
-        layout_strategy = 'flex',
-        scroll_strategy = 'cycle',
-        file_ignore_patterns = {
-            "target/.*",
-            ".git/.*",
-            "node_modules/.*",
-            "vendor/.*",
-        },
+      layout_strategy = 'flex',
+      scroll_strategy = 'cycle',
+      file_ignore_patterns = {
+          "target/.*",
+          ".git/.*",
+          "node_modules/.*",
+          "vendor/.*",
+      },
+      mappings = {
+        i = {
+          ['<esc>'] = actions.close,
+        }
+      }
     }
-}
-
-return M
+  })
+  require("telescope").load_extension("ui-select")
+  require('telescope').load_extension('media_files')
+  require('telescope').load_extension('fzf')
+end

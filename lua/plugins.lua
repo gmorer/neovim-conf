@@ -47,17 +47,20 @@ return {
     },
     init = function() require("leap").add_default_mappings() end
   },
+
   {
     "nvim-telescope/telescope.nvim",
-    opts = require("config.telescope").opts,
-    config = require("config.telescope").config,
-    dependencies = "nvim-web-devicons"
+    config = require("config.telescope"),
+    dependencies = {
+      { "nvim-telescope/telescope-fzf-native.nvim", build = 'make' },
+      "nvim-web-devicons",
+      "nvim-telescope/telescope-media-files.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
+    },
   },
+
   "folke/neodev.nvim",
 
-  "nvim-telescope/telescope-fzf-native.nvim",
-  "nvim-telescope/telescope-media-files.nvim",
-  "nvim-telescope/telescope-ui-select.nvim",
 
   -- Completion and linting
   {
@@ -112,7 +115,7 @@ return {
   {
     "j-hui/fidget.nvim",
     config = true,
-    opts = { text = { spinner = "dots_negative" }}
+    -- opts = { text = { spinner = "dots_negative" }}
   },
 
 
@@ -137,24 +140,24 @@ return {
   "nvim-tree/nvim-web-devicons",
 
   -- zen mode
-  {
-    "Pocco81/true-zen.nvim",
-    cmd = { "TZAtaraxis", "TZFocus", "TZMinimalist", "TZNarrow"},
-    opts = {
-      integrations = {
-        lualine = true,
-        kitty = {
-          enabled = true,
-          font = "+3",
-        },
-      },
-      modes = {
-        narrow = {
-          folds_style = "invisible",
-        },
-      },
-    }
-  },
+  -- {
+  --   "Pocco81/true-zen.nvim",
+  --   cmd = { "TZAtaraxis", "TZFocus", "TZMinimalist", "TZNarrow"},
+  --   opts = {
+  --     integrations = {
+  --       lualine = true,
+  --       kitty = {
+  --         enabled = true,
+  --         font = "+3",
+  --       },
+  --     },
+  --     modes = {
+  --       narrow = {
+  --         folds_style = "invisible",
+  --       },
+  --     },
+  --   }
+  -- },
 
   -- file explorer
   {
@@ -243,5 +246,21 @@ return {
     cmd = { "ToggleTerm" },
     version = "*",
     config = true
-  }
+  },
+
+  -- KeyBindings
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 100
+    end,
+    config = require("config.bindings").wk,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
 }
