@@ -1,10 +1,16 @@
--- Eviline config for lualine
--- Author: shadmansaleh
--- Credit: glepnir
-local lualine = require('lualine')
 
--- Color table for highlights
--- stylua: ignore
+local sections = {
+    -- these are to remove the defaults
+    lualine_a = {},
+    lualine_b = {},
+    lualine_y = {},
+    lualine_z = {},
+    -- These will be filled later
+    lualine_c = {},
+    lualine_x = {},
+}
+
+
 local colors = {
   bg       = '#202328',
   fg       = '#bbc2cf',
@@ -33,60 +39,14 @@ local conditions = {
   end,
 }
 
--- Config
-local config = {
-  options = {
-    globalstatus = true,
-    -- Disable sections and component separators
-    component_separators = '',
-    section_separators = '',
-    theme = 'onedark',
-    -- theme = {
-      -- We are going to use lualine_c an lualine_x as left and
-      -- right section. Both are highlighted by c theme .  So we
-      -- are just setting default looks o statusline
-      -- normal = { c = { fg = colors.fg, bg = colors.bg } },
-      -- inactive = { c = { fg = colors.fg, bg = colors.bg } },
-      --
-    -- },
-    ignore_focus = {'NvimTree'},
-  },
-  sections = {
-    -- these are to remove the defaults
-    lualine_a = {},
-    lualine_b = {},
-    lualine_y = {},
-    lualine_z = {},
-    -- These will be filled later
-    lualine_c = {},
-    lualine_x = {},
-  },
-  inactive_sections = {
-    -- these are to remove the defaults
-    lualine_a = {},
-    lualine_b = {},
-    lualine_y = {},
-    lualine_z = {},
-    lualine_c = {},
-    lualine_x = {},
-  },
-  disabled_filetypes = {
-    'NvimTrees',
-    'NvimTree',
-  },
-  extensions = {
-    'neo-tree',
-  }
-}
-
 -- Inserts a component in lualine_c at left section
 local function ins_left(component)
-  table.insert(config.sections.lualine_c, component)
+  table.insert(sections.lualine_c, component)
 end
 
 -- Inserts a component in lualine_x ot right section
 local function ins_right(component)
-  table.insert(config.sections.lualine_x, component)
+  table.insert(sections.lualine_x, component)
 end
 
 ins_left {
@@ -266,7 +226,24 @@ ins_right {
   color = { fg = colors.blue },
   padding = { left = 1 },
 }
-
--- Now don't forget to initialize lualine
-lualine.setup(config)
-
+return {
+  "nvim-lualine/lualine.nvim",
+  dependencies = { "arkav/lualine-lsp-progress" },
+  opts = {
+    options = {
+      globalstatus = true,
+      component_separators = '',
+      section_separators = '',
+      theme = 'catppuccin',
+      ignore_focus = {'NvimTree'},
+    },
+    sections = sections,
+    disabled_filetypes = {
+      'NvimTrees',
+      'NvimTree',
+    },
+    extensions = {
+      'neo-tree',
+    }
+  }
+}
