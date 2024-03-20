@@ -26,4 +26,5 @@ vim.api.nvim_set_keymap("i", "<C-S-V>", '"+p', { noremap = true, silent = true }
 
 
 -- vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber')
-
+vim.keymap.set('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   { expr = true })
+vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })

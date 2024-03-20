@@ -159,15 +159,39 @@ return {
 			},
 		},
 	},
+  { 'echasnovski/mini.completion', version = false, config = true },
+  { 'echasnovski/mini.cursorword', version = false, config = true },
+  {
+    'echasnovski/mini.starter',
+    version = false,
+    config = true,
+    opts = function()
+      local starter = require("mini.starter")
+      return {
+        items = {
+          starter.sections.sessions(20, true),
+          starter.sections.recent_files(10, false)
+        },
+        header = "Yo",
+        footer = "",
+      }
+    end
+  },
+  {
+    'echasnovski/mini.sessions',
+    version = false,
+    config = true,
+  },
 
   {
     "echasnovski/mini.indentscope",
+    config = true,
     version = false, -- wait till new 0.7.0 release to put it back on semver
-    opts = {
+    -- opts = {
       -- symbol = "▏",
-      symbol = "│",
-      options = { try_as_border = true },
-    },
+      -- symbol = "│",
+      -- options = { try_as_border = true },
+    -- },
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
@@ -175,8 +199,6 @@ return {
           "alpha",
           "dashboard",
           "neo-tree",
-          "Trouble",
-          "trouble",
           "lazy",
           "mason",
           "notify",
@@ -189,7 +211,6 @@ return {
       })
     end,
   },
-  { 'echasnovski/mini.cursorword', version = false, config = true },
 
 	{
 		"akinsho/toggleterm.nvim",
