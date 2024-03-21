@@ -12,12 +12,19 @@ return {
 				f = { require("telescope.builtin").find_files, "Find file" },
 				["/"] = { require("telescope.builtin").live_grep, "Global search" },
 				["b"] = { require("telescope.builtin").buffers, "Show open buffers" },
-				["d"] = { require("telescope.builtin").diagnostics, "Show LSP diagnostics" },
+        ["d"] = { function() require("trouble").toggle("document_diagnostics") end, "Document diagnostic"},
+        ["D"] = { function() require("trouble").toggle("workspace_diagnostic") end, "Workspace diagnostic"},
 				["s"] = { require("telescope.builtin").lsp_document_symbols, "Show document's symbols" },
 				["k"] = { vim.lsp.buf.hover, "Show definition" },
 				-- ['?'] = { require'telescope.builtin'.keymaps, "Show help"},
 				["?"] = { require("show_help"), "Show help" },
 			},
+      ["]"] = {
+        ["d"] = { function() require("trouble").next({skip_groups = true, jump = true}) end, "Next diagnostic"},
+      },
+      ["["] = {
+        ["d"] = { function() require("trouble").previous({skip_groups = true, jump = true}) end, "Previous diagnostic"},
+      },
 			["g"] = {
 				d = { require("telescope.builtin").lsp_definitions, "Go to definition" },
 				i = { require("telescope.builtin").lsp_implementations, "Go to implementation" },
