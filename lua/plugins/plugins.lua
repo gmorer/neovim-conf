@@ -7,7 +7,7 @@ return {
 	-- { "nvim-pack/nvim-spectre", enabled = false },
 	-- { "nvim-treesitter-context", enabled = false },
 
-	{ "folke/todo-comments.nvim", keys = false },
+	{ "folke/todo-comments.nvim", config = true },
 
 	-- "nyoom-engineering/oxocarbon.nvim",
 	-- Configure LazyVim to load kanagawa
@@ -54,57 +54,24 @@ return {
         return vim.ui.input(...)
       end
     end,
+    opts = {
+      select = {
+        get_config = function(opts)
+          if opts.kind == 'codeaction' then
+            return {
+              backend = 'nui',
+            }
+          end
+        end
+      },
+    },
   },
+
   { "MunifTanjim/nui.nvim", lazy = true },
 
 
-	-- lsp stuff
-
-	{
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v3.x",
-    config = function()
-      local lsp_zero = require('lsp-zero')
-      lsp_zero.extend_lspconfig()
-
-      lsp_zero.on_attach(function(_, bufnr)
-        lsp_zero.default_keymaps({buffer = bufnr})
-      end)
-    end,
-  },
-	{ "neovim/nvim-lspconfig" },
-	{
-    "williamboman/mason.nvim",
-    config = true,
-  },
-	{
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = {
-      "VonHeikemen/lsp-zero.nvim",
-      "williamboman/mason.nvim",
-    },
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "clangd",
-          "rust_analyzer",
-        },
-        handlers = {
-          require("lsp-zero").default_setup,
-        },
-      })
-  end
-  },
-
-
-	-- "nvim-lua/lsp_extensions.nvim",
 
 	-- lsp loading
-	{
-		"j-hui/fidget.nvim",
-		config = true,
-		-- opts = { text = { spinner = "dots_negative" }}
-	},
 
 	-- git
 	-- gitdiff
@@ -170,7 +137,7 @@ return {
 			},
 		},
 	},
-  { 'echasnovski/mini.completion', version = false, config = true },
+  { 'echasnovski/mini.completion', version = false, config = true, enabled = false },
   { 'echasnovski/mini.cursorword', version = false, config = true },
   {
     'echasnovski/mini.starter',

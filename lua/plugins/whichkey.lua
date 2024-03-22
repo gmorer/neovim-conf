@@ -16,6 +16,8 @@ return {
         ["D"] = { function() require("trouble").toggle("workspace_diagnostic") end, "Workspace diagnostic"},
 				["s"] = { require("telescope.builtin").lsp_document_symbols, "Show document's symbols" },
 				["k"] = { vim.lsp.buf.hover, "Show definition" },
+				["r"] = { vim.lsp.buf.rename, "Rename symbol" },
+				["a"] = { vim.lsp.buf.code_action, "Execute code action" },
 				-- ['?'] = { require'telescope.builtin'.keymaps, "Show help"},
 				["?"] = { require("show_help"), "Show help" },
 			},

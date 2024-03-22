@@ -14,7 +14,7 @@ vim.o.mouse = ""
 	-- nbsp = "⎵",
 	-- extends = "…",
 	-- precedes = "…",
--- }
+-- }c
 
 vim.opt.termguicolors = true
 
@@ -44,3 +44,5 @@ vim.o.belloff = "all"
 vim.opt.foldmethod = "expr"
 vim.opt.foldenable = false
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.pumblend = 10 -- Popup blend
+
