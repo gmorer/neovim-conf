@@ -33,6 +33,9 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       auto_preview = false,
+      action_keys = {
+        close = { "q", "<esc>"},
+      },
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
