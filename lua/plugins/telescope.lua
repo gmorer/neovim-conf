@@ -2,9 +2,10 @@ return {
 	"nvim-telescope/telescope.nvim",
 	keys = false,
 	dependencies = {
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		-- { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-web-devicons",
 		"nvim-telescope/telescope-media-files.nvim",
+    "nvim-treesitter/nvim-treesitter",
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -39,7 +40,7 @@ return {
 			},
 		})
 		require("telescope").load_extension("media_files")
-		require("telescope").load_extension("fzf")
+		-- require("telescope").load_extension("fzf")
 		-- require("telescope").load_extension("noice")
 	end,
 }
