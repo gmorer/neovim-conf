@@ -35,7 +35,7 @@ return function()
   for _, mode in pairs(modes) do
     local global = vim.api.nvim_get_keymap(mode)
     local buf_local = vim.api.nvim_buf_get_keymap(0, mode)
-      extract_keymaps(global)
+    extract_keymaps(global)
     extract_keymaps(buf_local)
   end
 

@@ -10,9 +10,6 @@ function M.on_attach(on_attach)
   })
 end
 
-
-
-
 return {
   -- add typescript to treesitter
   -- {
@@ -151,7 +148,7 @@ return {
         }
       },
       setup = {
-        gopls = function(_, opts)
+        gopls = function(_, _)
           -- workaround for gopls not supporting semanticTokensProvider
           -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
           M.on_attach(function(client, _)
@@ -173,7 +170,7 @@ return {
         end,
       },
     },
-    config = function(_, opts)
+    config = function(_, _)
     end
   },
 
@@ -228,5 +225,15 @@ return {
 		config = true,
 		-- opts = { text = { spinner = "dots_negative" }}
 	},
+  {
+   "folke/lazydev.nvim",
+   ft = "lua", -- only load on lua files
+   opts = {
+     library = {
+       -- See the configuration section for more details
+       -- Load luvit types when the `vim.uv` word is found
+     },
+   },
+  },
 }
 

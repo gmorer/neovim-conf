@@ -1,16 +1,4 @@
-local icons = {
-  diagnostics = {
-    Error = " ",
-    Warn  = " ",
-    Hint  = " ",
-    Info  = " ",
-  },
-  git = {
-    added    = " ",
-    modified = " ",
-    removed  = " ",
-  },
-}
+local icons = require("config.const").icons;
 
 local filename = function()
   return {
@@ -52,10 +40,10 @@ return {
         {
           "diagnostics",
           symbols = {
-            error = icons.diagnostics.Error,
-            warn = icons.diagnostics.Warn,
-            info = icons.diagnostics.Info,
-            hint = icons.diagnostics.Hint,
+            error = icons.error,
+            warn = icons.warn,
+            info = icons.info,
+            hint = icons.hint,
           },
         },
       },
@@ -63,11 +51,11 @@ return {
         {
           "diff",
           symbols = {
-            added = icons.git.added,
-            modified = icons.git.modified,
-            removed = icons.git.removed,
+            added = icons.vcs.added,
+            modified = icons.vcs.modified,
+            removed = icons.vcs.removed,
           },
-          source = icons.git
+          source = icons.vcs
         }
       },
       lualine_y = {

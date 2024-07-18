@@ -9,6 +9,7 @@ vim.o.pumblend=30
 -- vim.opt.guifont = {"JetBrains Mono", "h:10"}
 -- vim.opt.guifont = { "JetBrainsMono Nerd Font", ":h11" }
 vim.opt.guifont = { "Fira Code", ":h12" }
+vim.opt.guifont = { "Fira Code,Symbols Nerd Font Mono", ":h12" }
 
 -- RefreshGuiFont = function()
 --   vim.opt.guifont = string.format("%s:h%s",vim.g.gui_font_face, vim.g.gui_font_size)

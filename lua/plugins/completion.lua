@@ -63,6 +63,10 @@ return {
             end,
           }
           table.insert(opts.sources, { name = "luasnip" })
+          table.insert(opts.sources, {
+            name = "lazydev",
+            group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+          })
         end,
       },
     },

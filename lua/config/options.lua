@@ -1,3 +1,5 @@
+local icons = require("config/const").icons;
+
 vim.opt.list = true
 vim.opt.fillchars = {
 	diff = "╱",
@@ -43,6 +45,17 @@ vim.o.belloff = "all"
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldenable = false
--- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.pumblend = 10 -- Popup blend
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = ""
 
+vim.opt.pumblend = 10 -- Popup blend
+vim.o.so = 5;
+
+vim.fn.sign_define("DiagnosticSignError",
+  {text = icons.error, texthl = "DiagnosticSignError"})
+vim.fn.sign_define("DiagnosticSignWarn",
+  {text = icons.warn, texthl = "DiagnosticSignWarn"})
+vim.fn.sign_define("DiagnosticSignInfo",
+  {text = icons.info, texthl = "DiagnosticSignInfo"})
+vim.fn.sign_define("DiagnosticSignHint",
+  {text = icons.hint, texthl = "DiagnosticSignHint"})
